@@ -1,0 +1,51 @@
+
+
+
+# curl -sSL "https://mempool.space/api/v1/lightning/nodes/isp/16509"
+
+
+//{
+    "isp": "Amazon.com",
+    "nodes": [
+      {
+        "public_key": "03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f",
+        "capacity": 36010390247,
+        "channels": 2907,
+        "alias": "ACINQ",
+        "first_seen": 1522941222,
+        "updated_at": 1661274935,
+        "city": null,
+        "country": {
+          "de": "Vereinigte Staaten",
+          "en": "United States",
+          "es": "Estados Unidos",
+          "fr": "États Unis",
+          "ja": "アメリカ",
+          "pt-BR": "EUA",
+          "ru": "США",
+          "zh-CN": "美国"
+        },
+        "iso_code": "US",
+        "subdivision": null
+      },
+      ...
+    ]
+  }{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "verify",
+            "type": "shell",
+            "command": "mvn -B verify",
+            "group": "build"
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "mvn -B test",
+            "group": "test"
+        }
+    ]
+}
