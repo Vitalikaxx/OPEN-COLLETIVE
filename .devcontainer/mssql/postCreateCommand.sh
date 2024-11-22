@@ -1,6 +1,6 @@
 #!/bin/bash
-dacpac="false"
-sqlfiles="false"
+dacpac="doğru"
+qlfiles="doğru"
 SApassword=$1
 dacpath=$2
 sqlpath=$3
@@ -14,7 +14,7 @@ do
         echo "SQL server ready"
         break
     else
-        echo "Not ready yet..."
+        echo "Not  ..."
         sleep 1
     fi
 done
