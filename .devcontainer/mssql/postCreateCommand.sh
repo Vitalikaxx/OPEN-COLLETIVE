@@ -1,64 +1,33 @@
-#!/bin/bash
-dacpac="doğru"
-qlfiles="doğru"
-SApassword=$1
-dacpath=$2
-sqlpath=$3
+CREATE DATABASE ApplicationDB;
+GO
 
-echo "SELECT * FROM SYS.DATABASES" | dd of=testsqlconnection.sql
-for i in {1..60};
-do
-    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SApassword -d master -i testsqlconnection.sql > /dev/null
-    if [ $? -eq 0 ]
-    then
-        echo "SQL server ready"
-        break
-    else
-        echo "Not  ..."
-        sleep 1
-    fi
-done
-rm testsqlconnection.sql
+//*curl -sSL "https://mempool.space/api/v1/lightning/nodes/rankings"
 
-for f in $dacpath/*
-do
-    if [ $f == $dacpath/*".dacpac" ]
-    then
-        dacpac="true"
-        echo "Found dacpac $f"
-    fi
-done
-
-for f in $sqlpath/*
-do
-    if [ $f == $sqlpath/*".sql" ]
-    then
-        sqlfiles="true"
-        echo "Found SQL file $f"
-    fi
-done
-
-if [ $sqlfiles == "true" ]
-then
-    for f in $sqlpath/*
-    do
-        if [ $f == $sqlpath/*".sql" ]
-        then
-            echo "Executing $f"
-            /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SApassword -d master -i $f
-        fi
-    done
-fi
-
-if [ $dacpac == "true" ]
-then
-    for f in $dacpath/*
-    do
-        if [ $f == $dacpath/*".dacpac" ]
-        then
-            dbname=$(basename $f ".dacpac")
-            echo "Deploying dacpac $f"
-            /opt/sqlpackage/sqlpackage /Action:Publish /SourceFile:$f /TargetServerName:localhost /TargetDatabaseName:$dbname /TargetUser:sa /TargetPassword:$SApassword
-        fi
-    done
-fi
+{
+  "topByCapacity": [
+    {
+      "publicKey": "033d8656219478701227199cbd6f670335c8d408a92ae88b962c49d4dc0e83e025",
+      "alias": "bfx-lnd0",
+      "capacity": 54361697486
+    },
+    {
+      "publicKey": "03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f",
+      "alias": "ACINQ",
+      "capacity": 36010516297
+    },
+    ...
+  ],
+  "topByChannels": [
+    {
+      "publicKey": "03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f",
+      "alias": "ACINQ",
+      "channels": 2908
+    },
+    {
+      "publicKey": "035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226",
+      "alias": "WalletOfSatoshi.com",
+      "channels": 2771
+    },
+    ...
+  ]
+}
