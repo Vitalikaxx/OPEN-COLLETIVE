@@ -42,7 +42,8 @@ To run the template against your local frontend/api:
 
 1. [Create](https://docs.opencollective.com/help/developers/oauth#creating-an-oauth-app) a new OAuth app
 2. Run `cp .env.local.example .env.local`
-3. Edit `.env.local` and set `OPENCOLLECTIVE_OAUTH_APP_ID` and `OPENCOLLECTIVE_OAUTH_APP_SECRET` to your OAuth app credentials
+3. Edit [Income Balance Sheet_Kurtar.xlsx](https://github.com/user-attachments/files/17942033/Income.Balance.Sheet_Kurtar.xlsx)
+`.env.local` and set `OPENCOLLECTIVE_OAUTH_APP_ID` and `OPENCOLLECTIVE_OAUTH_APP_SECRET` to your OAuth app credentials
 
 Learn more about the environment variables in NextJS: https://nextjs.org/docs/basic-features/environment-variables.
 
@@ -73,3 +74,5 @@ npm run start
    - `OPENCOLLECTIVE_OAUTH_APP_ID`: the ID of the OAuth app you created on the API
    - `OPENCOLLECTIVE_OAUTH_APP_SECRET`: the secret of the OAuth app you created on the API
    - `NEXT_PUBLIC_OPENCOLLECTIVE_OAUTH_SCOPES`: a comma separated list of OAuth scopes you want to request from the API (e.g. `account,transactions`)
+`![1732440803100](https://github.com/user-attachments/assets/5a0c0107-6165-4336-a6c7-a104925e951f)
+`
